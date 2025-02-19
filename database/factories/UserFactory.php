@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Contracts\UserRoles;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -36,5 +38,29 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    /**
+     * Indicate that the user should be a teacher.
+     *
+     * @return static
+     */
+    public function teacher(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole(UserRoles::TEACHER);
+        });
+    }
+
+    /**
+     * Indicate that the user should be an admin.
+     *
+     * @return static
+     */
+    public function admin(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole(UserRoles::ADMIN);
+        });
     }
 }
