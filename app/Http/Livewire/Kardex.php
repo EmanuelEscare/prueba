@@ -11,6 +11,8 @@ class Kardex extends Component
 
     public $selectedSubjectId = null;
 
+    protected $listeners = ['closeModal' => 'clearSelectedSubject'];
+
     public function render()
     {
         return view('livewire.kardex');
@@ -28,5 +30,11 @@ class Kardex extends Component
     public function gradeSubject($subjectId)
     {
         $this->selectedSubjectId = $subjectId;
+        $this->emit('openModal', $subjectId);
+    }
+
+    public function clearSelectedSubject()
+    {
+        $this->selectedSubjectId = null;
     }
 }

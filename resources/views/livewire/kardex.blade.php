@@ -89,6 +89,6 @@
     </div>
 
     @if($selectedSubjectId)
-        <livewire:student.student-detail :studentId="$selectedSubjectId" />
+        <livewire:grade-subject :subjectId="$selectedSubjectId" :studentId="$selectedStudent->id"/>
     @endif
 </div>
