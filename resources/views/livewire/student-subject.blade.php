@@ -1,8 +1,8 @@
 <div>
     <form wire:submit.prevent="save" class="mt-5">
         <div class="mt-2 mb-4">
+            {{-- Student select --}}
             <label class="block text-sm font-medium text-gray-700">{{ __('Select a student') }}</label>
-            {{--  --}}
             <div class="relative w-94" x-data="{ open: false }">
                 <input type="text" wire:model="searchStudent" placeholder="{{__('Search by code')}}"
                     @focus="open = true"
@@ -25,11 +25,15 @@
                 @if($selectedStudent)
                     <p class="mt-2 text-sm text-gray-600">Seleccionado: <strong><b>{{ $selectedStudent->code }}</b> - {{ $selectedStudent->name }} {{ $selectedStudent->lastname }}</strong></p>
                 @endif
+                
+                @error('selectedStudent')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
-            {{--  --}}
         </div>
 
         <div class="mb-4">
+            {{-- Subject select --}}
             <label class="block text-sm font-medium text-gray-700">{{ __('Select a subject') }}</label>
             <select wire:model="subject" class="w-full mt-1 p-2 border rounded">
                 <option value="">{{ __('Select a subject') }}</option>
@@ -45,5 +49,15 @@
         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition">
             {{ __('Save') }}
         </button>
+
+        <div class="my-4">
+            @if (session()->has('message'))
+                <div
+                    x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show" 
+                    class="p-2 rounded-lg bg-emerald-600 text-white">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
     </form>
 </div>

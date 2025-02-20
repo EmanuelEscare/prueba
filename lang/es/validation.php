@@ -187,6 +187,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "subject" => "materia",
+        "selectedStudent" => "selecciona un estudiante",
+    ],
 
 ];
