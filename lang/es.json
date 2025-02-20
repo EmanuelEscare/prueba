@@ -60,5 +60,12 @@
     "Select a student": "Selecciona un estudiante",
     "Subject has been added to student": "Materia ha sido agregada al estudiante",
     "Subject has been removed from student": "Materia ha sido removida del estudiante",
-    "Grade has been saved": "Calificación ha sido guardada"
+    "Grade has been saved": "Calificación ha sido guardada",
+    "Subjects added": "Consulta de materias inscritas",
+    "No subjects added": "No hay materias inscritas",
+    "Grade": "Calificación",
+    "Grade subject": "Calificar materia",
+    "Unsubscribe": "Dar de baja",
+    "Subject has been unregistered": "Materia ha sido dada de baja",
+    "Grades": "Calificaciones"
 }

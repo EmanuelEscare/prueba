@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Student;
+use App\Models\Subject;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder
@@ -14,6 +15,12 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::factory(200)->create();
+        $subjects = Subject::limit(5)->pluck('id')->toArray();
+
+        $students = Student::factory(200)->create();
+
+        foreach ($students as $student) {
+            $student->subjects()->attach($subjects);
+        }
     }
 }
