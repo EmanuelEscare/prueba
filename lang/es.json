@@ -48,5 +48,11 @@
     "Close": "Cerrar",
     "Information of student": "Información del estudiante",
     "female": "Femenino",
-    "male": "Masculino"
+    "male": "Masculino",
+    "Credits": "Créditos",
+    "Description": "Descripción",
+    "Registration of a subject": "Registro de una materia",
+    "Registered subjects": "Consulta materias registradas",
+    "Save grade": "Guardar calificación",
+    "Drop subjects": "Dar de baja materias"
 }

@@ -30,6 +30,14 @@ Route::group(['middleware' => ['can:view_student']], function () {
 
 })->middleware('auth');
 
+Route::group(['middleware' => ['can:view_subject']], function () {
+
+    Route::get('/subjects', function () {
+        return view('subjects');
+    })->name('subjects');
+
+})->middleware('auth');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

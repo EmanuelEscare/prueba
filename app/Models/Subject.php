@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * @property string name
+ * @property string $name
+ * @property string $code
+ * @property string $description
+ * @property int $credits
  */
 class Subject extends Model
 {
@@ -15,6 +18,9 @@ class Subject extends Model
 
     protected $fillable = [
         'name',
+        'code',
+        'description',
+        'credits',
     ];
 
     public function students(): BelongsToMany
