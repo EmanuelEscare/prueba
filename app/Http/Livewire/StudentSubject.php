@@ -2,64 +2,36 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Student;
+use App\Concerns\Traits\WithStudentSelect;
 use App\Models\Subject;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class StudentSubject extends Component
 {
-
-    public $searchStudent = '';
-
-    public $searchSubject = '';
-
-    public $students = [];
-
-    /**
-     * @var int $student_id
-     */
-    public $student;
-
-    /**
-     * @var int $subject_id
-     */
+    use WithStudentSelect;
+    
     public $subject;
-
+    
     public function rules(): array
     {
         return [
-            'student' => 'required|exists:students,id',
-            'subject' => 'required|exists:subjects,id',
+            'selectedStudent.id' => 'required',
+            'subject' => 'required',
         ];
     }
 
-    protected $listeners = ['searchStudentInput' => 'updateSearchStudent'];
-
-    public function updateSearchStudent($value)
-    {
-        $this->searchStudent = $value;
-        $this->students = Student::where('code', 'like', "%{$this->searchStudent}%")
-                                    ->take(10)
-                                    ->get();
-    }
-
-    public function mount()
-    {
-        $this->students = Student::take(10)->get();
-    }
-
-    public function render()
+    public function render(): View
     {
         return view('livewire.student-subject');
     }
 
-    public function save()
+    public function save(): void
     {
-        $student = Student::find($this->student);
-        $student->subjects()->attach($this->subject);
+        $this->selectedStudent->subjects()->attach($this->subject);
 
-        $this->reset('student', 'subject');
+        $this->reset('selectedStudent', 'subject');
     }
 
     public function getSubjectsProperty(): Collection

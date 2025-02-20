@@ -1,17 +1,32 @@
 <div>
     <form wire:submit.prevent="save" class="mt-5">
-        <div class="mb-4">
+        <div class="mt-2 mb-4">
             <label class="block text-sm font-medium text-gray-700">{{ __('Select a student') }}</label>
-            <select wire:model="student" id="student_id" class="w-full mt-1 p-2 border rounded">
-                <option value="">{{ __('Select a student') }}</option>
-                @foreach ($this->students as $student)
-                    <option value="{{ $student->id }}">{{ $student->code }} - {{ $student->name }}
-                        {{ $student->lastname }}</option>
-                @endforeach
-            </select>
-            @error('student')
-                <span class="text-red-500 text-sm">{{ $message }}</span>
-            @enderror
+            {{--  --}}
+            <div class="relative w-94" x-data="{ open: false }">
+                <input type="text" wire:model="searchStudent" placeholder="{{__('Search by code')}}"
+                    @focus="open = true"
+                    @click.away="open = false;"
+                    class="w-full mt-1 p-2 border rounded"
+                />
+            
+                @if(!empty($students))
+                    <ul class="absolute w-full bg-white border rounded mt-1 shadow-md z-50 
+                   max-h-48 overflow-y-auto" x-show="open">
+                        @foreach($students as $student)
+                            <li wire:click="selectStudent({{ $student->id }})"
+                                class="px-3 py-2 cursor-pointer hover:bg-gray-200">
+                                <b>{{ $student->code }}</b> - {{ $student->name }} {{ $student->lastname }}
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            
+                @if($selectedStudent)
+                    <p class="mt-2 text-sm text-gray-600">Seleccionado: <strong><b>{{ $selectedStudent->code }}</b> - {{ $selectedStudent->name }} {{ $selectedStudent->lastname }}</strong></p>
+                @endif
+            </div>
+            {{--  --}}
         </div>
 
         <div class="mb-4">
@@ -31,45 +46,4 @@
             {{ __('Save') }}
         </button>
     </form>
-
-    @push('select2')
-        <script>
-            document.addEventListener('livewire:load', function() {
-                $('#student_id').select2();
-
-                // $('#student_id').on('select2:open', function() {
-                //     setTimeout(() => {
-                //         let searchInput = $('.select2-search__field');
-                //         searchInput.on('input', function() {
-                //             @this.set('searchStudent', this.value);
-                //         });
-                //     }, 100);
-                // });
-
-                $('#student_id').on('change', function() {
-                    @this.set('student', this.value);
-                });
-            });
-
-            function initSelect2() {
-                $('#student_id').select2();
-                $('#student_id').on('select2:open', function() {
-                    setTimeout(() => {
-                        let searchInput = $('.select2-search__field');
-                        searchInput.off('input').on('input', function() {
-                            Livewire.emit('searchStudentInput', this.value);
-                        });
-                    }, 100);
-                });
-            }
-
-            document.addEventListener('livewire:load', function() {
-                initSelect2();
-            });
-
-            document.addEventListener("livewire:update", function() {
-                initSelect2();
-            });
-        </script>
-    @endpush
 </div>
