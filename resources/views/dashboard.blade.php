@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{__('Registration of a subject')}}
+                    <h1 class="text-center text-xl m-3">{{__('Registration of a subject')}}</h1>
                     <hr>
                     @livewire('student-subject')
                 </div>

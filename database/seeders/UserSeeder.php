@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Contracts\UserRoles;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,14 +21,16 @@ class UserSeeder extends Seeder
 
         User::factory(3)->admin()->create();
 
-        User::firstOrCreate(
+        $user = User::firstOrCreate(
             [
-                'email' => 'admin@prueba.mx',
+                'email' => 'maestro@prueba.mx',
             ],
             [
-                'name' => 'Admin',
+                'name' => 'Lic. Adolfo Lopez',
                 'password' => Hash::make('asdf1234'),
             ]
         );
+
+        $user->assignRole(UserRoles::TEACHER);
     }
 }

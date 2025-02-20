@@ -39,5 +39,9 @@ class PermissionSeeder extends Seeder
         $admin_role = Role::where('name', UserRoles::ADMIN)->first();
 
         $admin_role->syncPermissions($permissions);
+
+        $teacher_role = Role::where('name', UserRoles::TEACHER)->first();
+
+        $teacher_role->syncPermissions($permissions);
     }
 }
