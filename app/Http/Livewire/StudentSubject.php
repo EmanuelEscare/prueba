@@ -17,7 +17,7 @@ class StudentSubject extends Component
     public function rules(): array
     {
         return [
-            'selectedStudent.id' => 'required',
+            'selectedStudent' => 'required',
             'subject' => 'required',
         ];
     }
@@ -29,7 +29,11 @@ class StudentSubject extends Component
 
     public function save(): void
     {
+        $this->validate();
+        
         $this->selectedStudent->subjects()->attach($this->subject);
+
+        session()->flash('message', __('Subject has been added to student'));
 
         $this->reset('selectedStudent', 'subject');
     }

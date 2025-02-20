@@ -57,5 +57,8 @@
     "Drop subjects": "Dar de baja materias",
     "Information of subject": "Información de la materia",
     "Select a subject": "Selecciona una materia",
-    "Select a student": "Selecciona un estudiante"
+    "Select a student": "Selecciona un estudiante",
+    "Subject has been added to student": "Materia ha sido agregada al estudiante",
+    "Subject has been removed from student": "Materia ha sido removida del estudiante",
+    "Grade has been saved": "Calificación ha sido guardada"
 }
