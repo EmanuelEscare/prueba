@@ -20,6 +20,11 @@
                             {{ __('Students') }}
                         </x-nav-link>
                     @endcan
+                    @can('view_subject')
+                        <x-nav-link :href="route('subjects')" :active="request()->routeIs('subjects')">
+                            {{ __('Subjects') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -80,6 +85,11 @@
                     {{ __('Students') }}
                 </x-responsive-nav-link>
             @endcan
+            @can('view_subject')
+                <x-responsive-nav-link :href="route('subjects')" :active="request()->routeIs('subjects')">
+                    {{ __('Subjects') }}
+                </x-responsive-nav-link>
+        @endcan
         </div>
 
         <!-- Responsive Settings Options -->
