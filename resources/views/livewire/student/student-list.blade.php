@@ -40,10 +40,10 @@
                         @endforelse
                     </tbody>
                 </table>
-                <div class="my-2 mx-4">
-                    <div class="flex justify-end">
-                        {{ $students->links() }}
-                    </div>
+            </div>
+            <div class="my-2 mx-4">
+                <div class="flex justify-end">
+                    {{ $students->links() }}
                 </div>
             </div>
         </div>
