@@ -31,7 +31,7 @@ class StudentSubject extends Component
     {
         $this->validate();
         
-        $this->selectedStudent->subjects()->attach($this->subject);
+        $this->selectedStudent->subjects()->syncWithoutDetaching([$this->subject]);
 
         session()->flash('message', __('Subject has been added to student'));
 

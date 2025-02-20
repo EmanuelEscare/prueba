@@ -21,10 +21,17 @@
 
             @if ($selectedStudent)
                 <p class="mt-12 text-sm text-gray-600">Seleccionado:</p>
-                <h1>
+                <h1 class="text-2xl">
                     <strong><b>{{ $selectedStudent->code }}</b> -
                         {{ $selectedStudent->name }} {{ $selectedStudent->lastname }}</strong>
                 </h1>
+                <br>
+                <p><strong>{{__('Email')}}:</strong> {{ $student->email }}</p>
+                <p><strong>{{__('Phone')}}:</strong> {{ $student->phone }}</p>
+                <p><strong>{{__('Address')}}:</strong> {{ $student->address }}</p>
+                <p><strong>{{__('Gender')}}:</strong> {{ __($student->gender) }}</p>
+                <p><strong>{{__('Birthdate')}}:</strong> {{ $student->birth_date }}</p>
+                <p><strong>{{__('Entry date')}}:</strong> {{ $student->entry_date }}</p>
             @endif
         </div>
         <br>

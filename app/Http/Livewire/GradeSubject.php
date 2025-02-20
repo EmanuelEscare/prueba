@@ -32,7 +32,7 @@ class GradeSubject extends Component
     {
         $this->validate();
 
-        $this->student->subjects()->sync([
+        $this->student->subjects()->syncWithoutDetaching([
             $this->subjectId => ['grade' => $this->grade]
         ]);
 
