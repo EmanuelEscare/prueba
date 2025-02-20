@@ -6,7 +6,7 @@
             <br>
             <form wire:submit.prevent="save">
                 <div class="mb-4">
-                    <label for="grade" class="block text-sm font-medium text-gray-700">{{__('Grades')}}</label>
+                    <label for="grade" class="block text-sm font-medium text-gray-700">{{__('Grade')}}</label>
                     <input type="number" id="grade" wire:model="grade" min="1" max="100" 
                         class="mt-1 block w-full p-2 border rounded-md focus:ring-blue-500 focus:border-blue-500" />
         

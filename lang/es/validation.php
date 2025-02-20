@@ -190,6 +190,7 @@ return [
     'attributes' => [
         "subject" => "materia",
         "selectedStudent" => "selecciona un estudiante",
+        "grade" => "calificación",
     ],
 
 ];
