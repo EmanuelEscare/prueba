@@ -49,6 +49,6 @@
         </div>
     </div>
     @if($selectedStudentId)
-        <livewire:student-detail :studentId="$selectedStudentId" />
+        <livewire:student.student-detail :studentId="$selectedStudentId" />
     @endif
 </div>
