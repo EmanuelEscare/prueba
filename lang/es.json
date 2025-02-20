@@ -38,6 +38,15 @@
     "Admin": "Administrador",
     "Subjects": "Materias",
     "Subject": "Materia",
-    "See more": "Ver más"
-
+    "See more": "Ver más",
+    "Showing": "Mostrando",
+    "to": "a",
+    "of": "de",
+    "results": "resultados",
+    "Search": "Buscar",
+    "Search by code": "Buscar por código",
+    "Close": "Cerrar",
+    "Information of student": "Información del estudiante",
+    "female": "Femenino",
+    "male": "Masculino"
 }

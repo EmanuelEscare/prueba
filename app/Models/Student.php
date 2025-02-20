@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * @property string name
- * @property string lastname
- * @property string code
- * @property string email
- * @property string phone
- * @property string address
- * @property string birth_date
- * @property string entry_date
+ * @property int $id
+ * @property string $name
+ * @property string $lastname
+ * @property string $code Unique identifier for the student
+ * @property string $email
+ * @property string $phone
+ * @property string $address
+ * @property DateTime $birth_date
+ * @property DateTime $entry_date
  */
 class Student extends Model
 {
@@ -29,6 +30,7 @@ class Student extends Model
         'address',
         'birth_date',
         'entry_date',
+        'gender'
     ];
 
     public function subjects(): BelongsToMany
