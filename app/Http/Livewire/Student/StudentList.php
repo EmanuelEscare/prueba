@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Student;
 
 use App\Models\Student;
 use Livewire\Component;
@@ -39,6 +39,6 @@ class StudentList extends Component
         $students = Student::where('code', 'like', "%{$this->search}%")
         ->paginate(10);
 
-        return view('livewire.student-list', compact('students'));
+        return view('livewire.student.student-list', compact('students'));
     }
 }
