@@ -15,9 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
-                        {{ __('Students') }}
-                    </x-nav-link>
+                    @can('view_student')
+                        <x-nav-link :href="route('students')" :active="request()->routeIs('students')">
+                            {{ __('Students') }}
+                        </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -73,9 +75,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('students')" :active="request()->routeIs('students')">
-                {{ __('Students') }}
-            </x-responsive-nav-link>
+            @can('view_student')
+                <x-responsive-nav-link :href="route('students')" :active="request()->routeIs('students')">
+                    {{ __('Students') }}
+                </x-responsive-nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
